@@ -1,0 +1,331 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Gaegu', sans-serif;
+  background-color: #FFD4D4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 75vw;
+  max-width: 1000px;
+}
+
+.browser-header {
+  display: flex;
+  margin-bottom: 0;
+  z-index: 10;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  border: 3px solid black;
+  border-bottom: none;
+  background-color: #CDE990;
+  border-radius: 8px 8px 0 0;
+  font-weight: bold;
+  margin-right: -2px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.tab:hover {
+  background-color: #AACB73; 
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.15); 
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tab.active {
+  background-color: #FFFFE8;
+  z-index: 20;
+  box-shadow: none;
+}
+
+.desktop-wrapper {
+  background-color: #FFFFE8;
+  border: 3px solid black;
+  border-radius: 20px;
+  border-top-left-radius: 0;
+  padding: 1rem;
+  height: 75vh;
+  box-shadow: 8px 8px #000000;
+  display: flex;
+  flex-direction: column; 
+  position: relative;
+  min-width: 600px;
+}
+
+.fake-browser-bar {
+  display: flex;
+  align-items: center;
+  background-color: #FFD4D4;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid black;
+  border-radius: 10px;
+  flex-shrink: 0; 
+}
+
+.content-scroll-area {
+  flex-grow: 1; 
+  overflow-y: auto; 
+  padding-right: 1rem; 
+}
+
+.nav-button {
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: #fdfdfd;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.2rem 0.6rem;
+  margin-right: 0.5rem;
+}
+
+.nav-button:hover {
+  background-color: #CDE990;
+}
+
+.reload-button {
+  margin-left: 0.75rem;
+}
+
+.address-bar {
+  flex: 1;
+  margin-left: 1rem;
+  background-color: #fdfdfd;
+  border: 2px solid black;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+}
+
+/* ------------------------------------------------------------- */
+/* SECTION TITLE STYLES */
+/* ------------------------------------------------------------- */
+.folder-section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    margin: 1.5rem 0 0.5rem 0; 
+    padding-left: 0; 
+    padding-bottom: 5px;
+    text-transform: lowercase; 
+}
+
+/* ------------------------------------------------------------- */
+/* RESPONSIVE FOLDER GRID STYLES */
+/* ------------------------------------------------------------- */
+.folder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+  gap: 3rem 1rem;
+  margin-top: 2rem; 
+  margin-bottom: 2rem; 
+  
+  justify-items: center; 
+  width: 100%;
+  max-width: 900px; 
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0; 
+}
+
+.folder {
+  position: relative; 
+  width: 100%; 
+  max-width: 220px; 
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+/* ------------------------------------------------------------- */
+
+/* Default (Past Project) Colors: CDE990 (Yellow-Green) */
+.folder-tab {
+  position: relative;
+  width: 50px;
+  height: 10px;
+  background-color: #CDE990; 
+  border: 3px solid #000;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  z-index: 2;
+  transform: none; /* Ensure it's not skewed when closed */
+}
+
+.folder-body {
+  background-color: #CDE990;
+  border: 3px solid #000;
+  border-radius: 8px 8px 8px 8px;
+  width: 100px;
+  height: 80px;
+  margin-top: -3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 4px #000;
+  text-align: center;
+  transform: none; /* Ensure it's not skewed when closed */
+}
+
+
+.folder-label {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #000;
+  font-family: 'Gaegu', sans-serif;
+  user-select: none;
+  cursor: default;
+  width: 100%;
+  transform: none; /* Crucial to keep the text straight */
+  position: relative;
+  z-index: 5;
+}
+.folder:hover .folder-body {
+  background-color: #AACB73;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.folder:hover .folder-tab {
+  background-color: #AACB73;
+  transition: background-color 0.3s ease;
+}
+
+/* ------------------------------------------------------------- */
+/* CURRENT PROJECT COLORS (Blue) */
+/* ------------------------------------------------------------- */
+.folder.current-project .folder-tab {
+  background-color: #90C3E9; 
+}
+
+.folder.current-project .folder-body {
+  background-color: #90C3E9; 
+}
+
+.folder.current-project:hover .folder-tab,
+.folder.current-project:hover .folder-body {
+  background-color: #6FAAD6; 
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ------------------------------------------------------------- */
+/* OPEN FOLDER STYLES - CORRECTED SKEW FOR OPEN EFFECT */
+/* ------------------------------------------------------------- */
+
+/* Only apply skew to the folder body when open */
+.folder.open .folder-body {
+    /* Apply the skew */
+    transform: skewX(-15deg); 
+    transform-origin: bottom left; 
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Ensure the tab remains straight (transform: none) */
+.folder.open .folder-tab {
+    transform: none;
+    transition: background-color 0.2s ease;
+}
+
+/* Default Open state (for Past Projects - Green/Yellow) */
+.folder.open .folder-body {
+    background-color: #AACB73; 
+    box-shadow: 2px 2px #000; 
+    margin-top: -6px; /* Adjust margin up slightly to re-align */
+}
+.folder.open .folder-tab {
+    background-color: #AACB73;
+}
+
+
+/* Open state for Current Projects (Blue) */
+.folder.current-project.open .folder-body {
+    background-color: #6FAAD6; 
+    box-shadow: 2px 2px #000; 
+    margin-top: -6px;
+}
+.folder.current-project.open .folder-tab {
+    background-color: #6FAAD6;
+}
+
+/* Remove hover effect when open */
+.folder.open:hover .folder-body,
+.folder.open:hover .folder-tab {
+    background-color: inherit;
+    transition: none; 
+}
+
+
+/* Popups - Updated for Resizing and Dragging */
+.popup {
+  position: fixed;
+  top: calc(50% - 150px);
+  left: calc(50% - 150px);
+  width: 300px;
+  height: 300px;
+  padding: 1rem;
+  border: 2px solid black;
+  display: none;
+  
+  /* Properties for user-resizing */
+  resize: both; 
+  overflow: auto; 
+  min-width: 200px; 
+  min-height: 200px;
+  
+  opacity: 0;
+  font-family: 'Gaegu', sans-serif;
+  border-radius: 10px;
+  cursor: move; 
+  z-index: 10;
+  background-color: white;
+}
+.popup.show {
+  display: block !important;
+  opacity: 1;
+  /* Transform is handled by JS for dragging, so we keep a basic scale here */
+  transform: scale(1);
+}
+
+#popup-project1 { background-color: #fef4f4; }
+#popup-project2 { background-color: #ffffe0; }
+#popup-project3 { background-color: #e4fff3; }
+#popup-project4 { background-color: #f2f0ff; }
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Media Query for smaller screens to adjust wrapper and container */
+@media (max-width: 650px) {
+  .desktop-wrapper {
+    min-width: unset;
+    width: 95vw;
+    height: auto; 
+    box-shadow: 4px 4px #000000;
+  }
+  
+  .container {
+    width: 100%;
+    padding: 0 5px;
+  }
+  
+  .tab {
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
