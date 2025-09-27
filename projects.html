@@ -1,89 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>tiffany's personal website</title>
-  <link rel="stylesheet" href="index.css" />
-  <script defer src="index.js"></script> 
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>tiffany's personal website</title>
+<link rel="stylesheet" href="index.css" />
+<script defer src="index.js"></script> 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div class="container">
-    <div class="browser-header">
-      <a href="index.html" class="tab" data-tab="home">about me</a>
-      <div class="tab active" data-tab="projects">projects</div>
-      <a href="research.html" class="tab" data-tab="research">research</a>
-    </div>
 
-    <div class="desktop-wrapper">
-      <div class="fake-browser-bar">
-        <div class="browser-buttons">
-          <button class="nav-button">&lt;</button>
-          <button class="nav-button">&gt;</button>
-        </div>
-        <div class="address-bar">https://www.tiffany.com/projects</div>
-        <button class="nav-button reload-button">⟳</button>
+<div id="custom-cursor"></div>
+
+<div class="container">
+  <div class="browser-header">
+    <a href="index.html" class="tab" data-tab="home">about me</a>
+    <div class="tab active" data-tab="projects">projects</div>
+    <a href="research.html" class="tab" data-tab="research">research</a>
+  </div>
+
+  <div class="desktop-wrapper">
+    <div class="fake-browser-bar">
+      <div class="browser-buttons">
+        <button class="nav-button">&lt;</button>
+        <button class="nav-button">&gt;</button>
       </div>
-
-      <div class="content-scroll-area">
-        <h2 class="folder-section-title">current projects</h2>
-        <div class="folder-grid">
-          <div class="folder" data-folder="project1" aria-label="Open Project 1">
-            <div class="folder-tab"></div>
-            <div class="folder-body"></div>
-            <div class="folder-label">project_1</div>
-          </div>
-        </div>
-        
-        <h2 class="folder-section-title">past projects</h2>
-        <div class="folder-grid">
-          <div class="folder" data-folder="project2" aria-label="Open Project 2">
-            <div class="folder-tab"></div>
-            <div class="folder-body"></div>
-            <div class="folder-label">project_2</div>
-          </div>
-          <div class="folder" data-folder="project3" aria-label="Open Project 3">
-            <div class="folder-tab"></div>
-            <div class="folder-body"></div>
-            <div class="folder-label">project_3</div>
-          </div>
-          <div class="folder" data-folder="project4" aria-label="Open Project 4">
-            <div class="folder-tab"></div>
-            <div class="folder-body"></div>
-            <div class="folder-label">project_4</div>
-          </div>
+      <div class="address-bar">https://www.tiffany.com/projects</div>
+      <button class="nav-button reload-button">⟳</button>
+    </div>
+    
+    <div class="instruction-bar">
+      <span class="instruction-text">
+        press folder to open popup (multiples allowed) &nbsp;&nbsp;||&nbsp;&nbsp; press ✖ to close &nbsp;&nbsp;||&nbsp;&nbsp; press ⟳ to close all popups <br>drag title bar to move &nbsp;&nbsp;||&nbsp;&nbsp; drag popup edge to resize
+      </span>
+    </div>
+    
+    <div class="content-scroll-area">
+      <h2 class="folder-section-title">current projects</h2>
+      <div class="folder-grid">
+        <div class="folder" data-folder="project1" aria-label="Open Project 1">
+          <div class="folder-tab"></div>
+          <div class="folder-body"></div>
+          <div class="folder-label">project_1</div>
         </div>
       </div>
       
-      <div class="popup" id="popup-project1">
-        <button class="close-btn">✖</button>
-        <h3>Project 1</h3>
-        <p>This is a description of Project 1.</p>
-        <img src="path/to/image.jpg" alt="Project 1 Image" style="max-width: 100%; height: auto;" />
-        <video controls style="max-width: 100%; margin-top: 1rem;">
-          <source src="path/to/video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <p>More text content if needed.</p>
+      <h2 class="folder-section-title">past projects</h2>
+      <div class="folder-grid">
+        <div class="folder" data-folder="project2" aria-label="Open Project 2">
+          <div class="folder-tab"></div>
+          <div class="folder-body"></div>
+          <div class="folder-label">Hack@Brown_2024</div>
+        </div>
+        <div class="folder" data-folder="project3" aria-label="Open Project 3">
+          <div class="folder-tab"></div>
+          <div class="folder-body"></div>
+          <div class="folder-label">RhythmGame_AI</div>
+        </div>
+        <div class="folder" data-folder="project4" aria-label="Open Project 4">
+          <div class="folder-tab"></div>
+          <div class="folder-body"></div>
+          <div class="folder-label">LunarCrater_ML</div>
+        </div>
+        <div class="folder" data-folder="project5" aria-label="Open Project 5">
+          <div class="folder-tab"></div>
+          <div class="folder-body"></div>
+          <div class="folder-label">BRGD_2024</div>
+        </div>
+        </div>
+    </div>
+    
+    <div class="popup" id="popup-project1">
+      <div class="popup-title-bar">
+          project_1.html
+          <button class="close-btn">✖</button>
       </div>
-      <div class="popup" id="popup-project2">
-        <button class="close-btn">✖</button>
-        📂 Project 2 description here
-      </div>
-      <div class="popup" id="popup-project3">
-        <button class="close-btn">✖</button>
-        📂 Project 3 description here
-      </div>
-      <div class="popup" id="popup-project4">
-        <button class="close-btn">✖</button>
-        📂 Project 4 description here
+      <div class="popup-content">
+          <h3>Project 1</h3>
+          <p>This is a description of Project 1.</p>
+          <img src="path/to/image.jpg" alt="Project 1 Image" style="max-width: 100%; height: auto;" />
+          <video controls style="max-width: 100%; margin-top: 1rem;">
+            <source src="path/to/video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <p>More text content if needed.</p>
       </div>
     </div>
+    
+    <div class="popup" id="popup-project2">
+      <div class="popup-title-bar">
+        Hack@Brown_2024
+        <button class="close-btn">✖</button>
+      </div>
+      <div class="popup-content">
+        <h3>🚀 Space Race</h3>
+        
+        <div style="margin: 1rem 0; text-align: center;">
+          <iframe 
+            width="100%" 
+            height="300" 
+            src="https://www.youtube.com/embed/mGKe1RYGu1c" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        
+        <p>A game designed for people who lack motivation to exercise. Travel to different planets and collect pets and memorabilia as you exercise! This project was built in **Android Studio** using **Kotlin** during Hack@Brown 2024.</p>
+
+        <h4>🔗 Links & Resources</h4>
+        <ul>
+          <li><a href="https://github.com/yuetu00/Space-Race" target="_blank">GitHub Repository</a></li>
+          <li><a href="https://devpost.com/software/space-race-75jqb9" target="_blank">Devpost Page</a></li>
+          <li><a href="https://www.figma.com/proto/ty5xw9m5fCrg7ZOOIsbDxK/Space-Race?type=design&node-id=6-20&t=gIFElTpHn7tbeeQC-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=6%3A20&show-proto-sidebar=1" target="_blank">Figma Prototype (UX/UI)</a></li>
+        </ul>
+
+        <h4>✨ What I Accomplished</h4>
+        <p>I successfully learned a new coding language (Kotlin) and IDE (Android Studio) in a short time. Despite significant roadblocks with iOS incompatibility, I persevered and built a strong foundation for the app. I worked collaboratively with a team that had only met that morning!</p>
+        
+        <h4>🔧 Core Technology Stack</h4>
+        <p>
+          <a href="https://developer.android.com/studio" target="_blank"><code>Android Studio</code></a>
+          |
+          <a href="https://kotlinlang.org/" target="_blank"><code>Kotlin</code></a>
+          |
+          <a href="https://www.figma.com/" target="_blank"><code>Figma</code></a>
+        </p>
+      </div>
+    </div>
+    
+    <div class="popup" id="popup-project3">
+      <div class="popup-title-bar">
+        CSCI_1430_Report
+        <button class="close-btn">✖</button>
+      </div>
+      <div class="popup-content">
+          <h3>🤖 AI Rhythm Game Player: DJMax with Computer Vision</h3>
+
+          <p style="font-style: italic; margin-bottom: 1rem;">
+              Final Project For CSCI 1430 Computer Vision
+          </p>
+          
+          <div style="margin: 1rem 0; text-align: center;">
+              <video controls width="100%" style="max-height: 300px; background: #000; border: 2px solid black;">
+                  <source src="videos/01_L.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+              </video>
+          </div>
+          
+          <p><strong>Abstract:</strong> This project focuses on making a lightweight neural network system capable of playing the rhythm game DJMax Respect V in real time using grayscale screen captures. Our model combines spatial feature extraction via a modified ResNet-18 and temporal modeling with a Gated Recurrent Unit (GRU) to predict key presses frame-by-frame. We also designed a dynamic loss function based on Binary Cross-Entropy that emphasizes temporal precision and label transitions.</p>
+
+          <h4>📊 Key Results</h4>
+          <ul>
+              <li>Achieved precision per key greater than **80%** (up to 99.8%).</li>
+              <li>Real game tests demonstrated performance that **exceeded human scores** on difficult, untrained songs.</li>
+              <li>The final model is a light-weight system with **3 million parameters**.</li>
+          </ul>
+
+          <div style="margin: 1rem 0; text-align: center; height: 400px; border: 2px solid #ccc;">
+              <iframe 
+                  src="videos/finalproject_cv.pdf#page=3" 
+                  style="width: 100%; height: 100%; border: none;"
+              >
+                  This browser does not support PDFs. Please use the link below to download or view the report.
+              </iframe>
+          </div>
+
+          <h4>🔗 Links & Resources</h4>
+          <ul>
+              <li><a href="videos/finalproject_cv.pdf" target="_blank">CSCI 1430 Final Project Report (PDF)</a></li>
+              <li><a href="https://drive.google.com/drive/folders/1wsH6CuSxASzPQl1X4VYxtIIR43HAku2k" target="_blank">Video Demos (Google Drive Folder)</a></li>
+          </ul>
+
+          <h4>🔧 Core Technology Stack</h4>
+          <p>
+              <a href="https://pytorch.org/" target="_blank"><code>PyTorch</code></a>
+              |
+              <a href="https://en.wikipedia.org/wiki/ResNet" target="_blank"><code>ResNet-18 (Custom)</code></a>
+              |
+              <a href="https://en.wikipedia.org/wiki/Gated_recurrent_unit" target="_blank"><code>GRU</code></a>
+              |
+              <a href="https://pynput.readthedocs.io/en/latest/" target="_blank"><code>pynput</code></a>
+          </p>
+      </div>
+    </div>
+    
+    <div class="popup" id="popup-project4">
+      <div class="popup-title-bar">
+          LunarCraterML.pdf
+          <button class="close-btn">✖</button>
+      </div>
+      <div class="popup-content">
+          <h3>🌕 Identifying Lunar Craters with Machine Learning</h3>
+          
+          <p style="font-style: italic; margin-bottom: 1rem;">
+              Final Project For EEPS-DATA 1340 Machine Learning for the Earth and Environment
+          </p>
+
+          <div style="margin: 1rem 0; text-align: center;">
+              <img src="videos/intro.png" alt="Lunar Crater Project Introduction" style="max-width: 100%; height: auto; border: 1px solid #ddd;" />
+          </div>
+          
+          <h4>Abstract</h4>
+          <p>In this study, we present a machine learning approach to automate crater classification to reduce human error and increase the accuracy of the crater size-frequency distribution analysis.</p>
+          
+          <div style="margin: 1rem 0; text-align: center;">
+              <img src="videos/pipeline.png" alt="Machine Learning Pipeline" style="max-width: 100%; height: auto; border: 1px solid #ddd;" />
+          </div>
+
+          <p>Using the Lunar Reconnaissance Orbiter dataset, consisting of 502 fresh craters, 869 old craters, and 3,629 images containing neither, we performed feature extraction and attained 768-dimensional embeddings. Dimensionality reduction was applied, and several models were tested, with the two most notable being **SVM** and **Random Forest**.</p>
+          
+          <h4 style="margin-top: 1.5rem;">📊 Key Results (Model Performance)</h4>
+          <div style="margin: 1rem 0; text-align: center;">
+              <img src="videos/eeps_results.png" alt="Model Performance Results" style="max-width: 100%; height: auto; border: 1px solid #ddd;" />
+          </div>
+          <p>The machine learning model positively identified craters effectively, but struggled to detect all craters in the dataset, highlighting areas for future improvement. However, it was able to identify nearly all images without any craters in them at all.</p>
+          
+          <h4>🔗 Links & Resources</h4>
+          <ul>
+              <li><a href="videos/eeps.pdf" target="_blank">Full Final Report (PDF)</a></li> 
+          </ul>
+          <div style="text-align: center; margin: 1rem 0; height: 500px; border: 1px solid #ccc;">
+              <iframe 
+                  src="videos/eeps.pdf" 
+                  style="width: 100%; height: 100%; border: none;"
+              >
+                  This browser does not support embedded PDFs. Please use the link above.
+              </iframe>
+          </div>
+
+          <h4>🔧 Core Technology Stack</h4>
+          <p>
+              <code>Vision Transformer (ViT)</code>
+              |
+              <code>Principal Component Analysis (PCA)</code>
+              |
+              <code>Random Forest Classifier</code>
+              |
+              <code>Support Vector Machine (SVM)</code>
+              |
+              <code>Python (sklearn, transformers)</code>
+          </p>
+      </div>
+    </div>
+
+    <div class="popup" id="popup-project5">
+      <div class="popup-title-bar">
+          Orbit of Desire
+          <button class="close-btn">✖</button>
+      </div>
+      <div class="popup-content">
+          <h3>💖 Orbit of Desire</h3>
+          <p style="font-style: italic; margin-bottom: 1rem;">
+              For BRGD (Brown RISD Game Development Club) Fall 2024
+          </p>
+        
+          <p style="font-style: italic; margin-bottom: 1rem;">
+              Intergalactic space station romance! Love blooms in this botanical research outpost.
+          </p>
+
+          <div style="margin: 1rem 0; text-align: center;">
+              <img src="videos/orbit_of_desire.png" alt="Orbit of Desire Main Image" style="max-width: 100%; height: auto; border: 1px solid #ddd;" />
+          </div>
+          
+          <h4>Abstract / Game Pitch</h4>
+          <p> We created a dating sim game. In this Visual Novel, you are participating in a scientific intergalactic residency. Navigating this new opportunity to grow in your botanical practice you slowly get acquainted with your fellow residents. Alone in space, surrounded by the stars, could it possible that you may enter a new stage of romance in this Orbit of Desire?</p>
+          
+          <h4>💻 Game Manager Implementation</h4>
+          <p>I implemented game manager, creating a central script to handle a game's core logic, states, and flow, and scene transitions, by acting as a central hub for other game systems and objects. As seen in the Miro and Figma board below:</p>
+          <div style="margin: 1rem 0; text-align: center;">
+              <iframe 
+                  width="100%" 
+                  height="450" 
+                  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FFtX8cjDgbEwc1iaycbjnn1%2FOrbit-of-Desire%3Fnode-id%3D155-155%26t%3DdvHgz93uG9F1cqYI-4&node-id=155-155&t=dvHgz93uG9F1cqYI-4" 
+                  frameborder="0" 
+                  allowfullscreen>
+              </iframe>
+          </div>
+          <div style="margin: 1rem 0; text-align: center;">
+              <iframe 
+                  width="100%" 
+                  height="350" 
+                  src="https://miro.com/app/live-embed/uXjVLcDswdk=/?focusWidget=3458764602268234609&embedMode=view_only_without_ui&embedId=916207530267" 
+                  frameborder="0" 
+                  scrolling="no" 
+                  allow="fullscreen; clipboard-read; clipboard-write" 
+                  allowfullscreen>
+              </iframe>
+          </div>
+
+          <h4>🖼️ UI/UX Elements / Menu Control / Redirection</h4>
+          <div style="margin: 1rem 0; text-align: center;">
+              <img src="videos/orbit_1.png" alt="Orbit of Desire UI Screenshot 1" style="max-width: 100%; height: auto; margin-bottom: 0.5rem; border: 1px solid #ddd;" />
+              <img src="videos/orbit_3.png" alt="Orbit of Desire UI Screenshot 2" style="max-width: 100%; height: auto; margin-bottom: 0.5rem; border: 1px solid #ddd;" />
+              <img src="videos/orbit_2.png" alt="Orbit of Desire UI Screenshot 3" style="max-width: 100%; height: auto; border: 1px solid #ddd;" />
+          </div>
+          
+          <h4>🔗 Links & Resources</h4>
+          <ul>
+              <li><a href="https://brownrisdgames.itch.io/orbit-of-desire" target="_blank">Play the Game on Itch.io</a></li>
+          </ul>
+
+          <h4>👥 Team & Credits</h4>
+          <div style="margin: 1rem 0; text-align: center;">
+              <img src="videos/orbit_credit.png" alt="Orbit of Desire Credit Page" style="max-width: 100%; height: auto; border: 1px solid #ddd;" />
+          </div>
+
+          <h4>🔧 Core Technology Stack</h4>
+          <p>
+              <code>Unity</code>
+              |
+              <code>C#</code>
+          </p>
+      </div>
+    </div>
+    </div>
   </div>
+</div>
 </body>
 </html>

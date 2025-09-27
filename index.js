@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const reloadButton = document.querySelector('.reload-button');
 
   let highestZIndex = 1000;
+  // Define a max offset for the stagger effect (e.g., 50 pixels)
+  const maxStaggerOffset = 50; 
 
   // Function to bring the clicked popup to the top
   function bringToFront(popup) {
@@ -16,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // 1. Close the popup
       popup.classList.remove("show");
       popup.style.display = "none";
-      // Optional: Reset translation on close so they open in the center again
+      // Reset translation on close so they open in the center again
       popup.style.transform = "none";
 
       // 2. Reset the corresponding folder state
@@ -39,11 +41,22 @@ document.addEventListener("DOMContentLoaded", () => {
       bringToFront(popup);
 
       if (!popup.classList.contains("show")) {
+        
+        // --- NEW CODE FOR STAGGERED OPENING ---
+        // Calculate random offsets between 0 and maxStaggerOffset
+        const offsetX = Math.floor(Math.random() * maxStaggerOffset);
+        const offsetY = Math.floor(Math.random() * maxStaggerOffset);
+
+        // Apply the transform to stagger the opening position
+        // This is added to the base center position defined in CSS
+        popup.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        // ------------------------------------
+        
         // INSTANT OPEN
-        popup.style.display = "block";
+        popup.style.display = "flex"; 
         popup.classList.add("show");
         
-        // ✨ NEW: Add 'open' class to the folder
+        // Add 'open' class to the folder
         folder.classList.add('open');
       }
     });
@@ -55,10 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
       popup.classList.remove("show");
       // INSTANT CLOSE
       popup.style.display = "none";
-      // Optional: Reset translation on close
+      // Reset translation on close
       popup.style.transform = "none";
       
-      // ✨ NEW: Remove 'open' class from the corresponding folder
+      // Remove 'open' class from the corresponding folder
       const folderId = popup.id.replace('popup-', '');
       const folder = document.querySelector(`[data-folder="${folderId}"]`);
       if (folder) {
@@ -77,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // ----------------------------------------------------
-  // 3. Draggable Functionality (Instant Cursor Tracking)
+  // 3. Draggable Functionality (Updated to use Title Bar)
   // ----------------------------------------------------
   popups.forEach(popup => makeDraggable(popup));
 
@@ -86,21 +99,19 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentX = 0, currentY = 0;
     
     el.addEventListener('mousedown', (e) => {
-      // Prevent drag when clicking the resize area
       const rect = el.getBoundingClientRect();
       const edgeTolerance = 15;
       
       const isNearRightEdge = rect.right - e.clientX < edgeTolerance;
       const isNearBottomEdge = rect.bottom - e.clientY < edgeTolerance;
+      
+      // NEW CHECK: Only start dragging if the target is the title bar itself
+      const isTitleBar = e.target.classList.contains('popup-title-bar');
 
-      if (isNearRightEdge || isNearBottomEdge || e.target.classList.contains('close-btn')) {
+      if (isNearRightEdge || isNearBottomEdge || e.target.classList.contains('close-btn') || !isTitleBar) {
+        // Allow resizing or close button click, but prevent dragging elsewhere
         return; 
       }
-      
-      // Allow drag only on the popup element itself (or its direct children that aren't the close button)
-      // We check if the target is the popup or a child element like the h3/p tag inside
-      // A simple check is to ensure we are dragging on the popup itself, not an inner scrollable element if it exists.
-      // For simplicity with this current structure, we allow dragging unless it's the close button.
       
       isDragging = true;
       bringToFront(el);
@@ -127,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const newY = e.clientY - offsetY;
 
       // Direct update for instant tracking (zero lag)
+      // Use translate3d to retain any initial staggered position
       el.style.transform = `translate3d(${newX}px, ${newY}px, 0)`;
     };
 
