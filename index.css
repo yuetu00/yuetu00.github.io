@@ -117,21 +117,28 @@ body, html {
 }
 
 /* ------------------------------------------------------------- */
-/* RESPONSIVE FOLDER GRID STYLES */
+/* RESPONSIVE FOLDER GRID STYLES (UPDATED FOR SPREAD) */
 /* ------------------------------------------------------------- */
 .folder-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
-  gap: 3rem 1rem;
+  /* Enforce 3 columns maximum. Adjust the minmax value for responsiveness. */
+  grid-template-columns: repeat(3, minmax(150px, 1fr)); 
+  /* UPDATED: Increased horizontal gap from 1rem to 3rem for more spread */
+  gap: 3rem 3rem;
   margin-top: 2rem; 
   margin-bottom: 2rem; 
   
-  justify-items: center; 
-  width: 100%;
-  max-width: 900px; 
+  display: grid;
+  
+  /* NEW: Increased max-width to accommodate the larger gap */
+  max-width: 800px; 
+  /* NEW: Use margin: 0 auto to center the entire grid container */
   margin-left: auto;
   margin-right: auto;
+  
   padding: 0; 
+  
+  /* Ensure individual items (like the single current project) start at the beginning of their column cell */
+  justify-items: start; 
 }
 
 .folder {
@@ -259,7 +266,7 @@ body, html {
 
 
 /* ------------------------------------------------------------- */
-/* *** THE FIX: Prevent hover from changing open folder color *** */
+/* *** The Fix: Prevent hover from changing open folder color *** */
 /* ------------------------------------------------------------- */
 
 /* All Projects (Yellow-Green) */
@@ -439,6 +446,14 @@ body, html {
   .tab {
     font-size: 1rem;
     padding: 0.5rem 0.75rem;
+  }
+  
+  /* Allows the folder grid to wrap to 1 or 2 columns gracefully */
+  .folder-grid {
+      /* Reverting to auto-fit for small screens to prevent overflow */
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+      max-width: 100%; /* Allow grid to fill width */
+      gap: 3rem 1rem; /* Reduce gap on small screens */
   }
 }
 
