@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
-    <title> tiffany's personal website </title>
+    <title> tiffany's personal website - research </title>
     <link rel="stylesheet" href = "index.css" />
 
-    <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
 
 
-
-    <!-- do more research on this -->
-    <!-- supposed to look good on all devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -37,11 +32,155 @@
             <button class="nav-button reload-button">⟳</button>
         </div>
 
-      <div class="content-area">
-        <!-- main content here -->
+      <div class="content-scroll-area">
+        
+        <h1>Research Overview 🌕</h1>
+        <p>I am interested in lunar <u>impact cratering</u> and <u>ejecta dynamics</u>. My work focuses using <u>remote sensing data</u> and <u>image processing</u> to understand the subsurface rheology of planetary bodies. I'm currently focused on mapping and analyzing albedo features around new lunar impacts.</p>
+
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 20px 0;">
+            <div style="display: flex; justify-content: center; gap: 40px; width: 60%; margin-bottom: 10px;">
+                <img src="videos/148_crater.png" alt="Crater 148" style="width: 50%; height: auto; border: 2px solid #000;"/>
+                <img src="videos/217_crater.png" alt="Crater 217" style="width: 50%; height: auto; border: 2px solid #000;"/>
+            </div>
+            <div style="
+                max-width: 60%; 
+                margin: 0 auto; 
+                padding: 10px; 
+                background-color: #CDE990; 
+                border: 2px solid #000;
+                border-radius: 10px; 
+                text-align: left;
+                font-size: small;
+            ">
+                Examples of two fresh lunar impact craters (from LROC NAC images M1284812626RC and M1401591948RC) and their radial ejecta after image processing.
+            </div>
+        </div>
+        <hr>
+
+        <h2>Current Focus: Mapping Albedo Zones of New Lunar Impacts</h2>
+
+        <h3>Main Goal:</h3>
+        <p>To systematically map and characterize the extensive bright and dark zones (<u>albedo features</u>) surrounding the newest impact craters on the Moon and determine what causes them.</p>
+
+        <h3>The Mystery of the Extensive Ejecta</h3>
+        <p><a href="https://www.nature.com/articles/nature19829" target="_blank">Recent work</a> (Speyerer et al., 2016) has identified over 200 new impact craters on the Moon created in the last decade. What's striking is that these new impacts are often surrounded by <u>extensive radial albedo features</u> that can stretch for tens of kilometers—up to 50 times the crater radius.</p>
+        <p>My research aims to investigate how the scale of these features correlates with latitude, the dustiness and geological settings of the terrain, and their similarity to known lunar cold spots.</p>
+        <p><u>Cold spots</u> are thermally distinct areas (colder than their surroundings) observed by the LRO Diviner instrument. Cold spots are thought to be caused by low-density, fluffy material that hasn't yet compacted through space weathering.</p>
+
+        <div style="margin: 20px 0; text-align: center;">
+            <img src="videos/cold_spot.png" alt="Example of a cold spot crater in Diviner H-Parameter data" style="width: 50%; height: auto; border: 2px solid #000; display: block; margin: 0 auto;"/>
+            <div style="
+                max-width: 60%; 
+                margin: 10px auto; 
+                padding: 10px; 
+                background-color: #CDE990; 
+                border: 2px solid #000;
+                border-radius: 10px; 
+                text-align: left;
+                font-size: small;
+            ">
+                An example of a cold spot crater shown in Diviner H-Parameter data [9] where dark blue is low thermal inertia and light blue is higher (M1224603815RC). The colormap in A is inverted.
+            </div>
+        </div>
+
+        <h3>Pipeline</h3>
+        <p>To address this, I've developed a <u>Python pipeline</u> to process high-resolution imagery from the Lunar Reconnaissance Orbiter (LRO) Narrow Angle Camera (NAC):</p>
+        <ol>
+            <li>The pipeline automatically queries the LRO image database to find optimal <u>before-and-after image pairs</u> for 77 new impact sites.</li>
+            <li>The pipeline <u>georeferences and tone-matches</u> these images, enhancing them to isolate and highlight the subtle albedo changes caused by the fresh impact ejecta.</li>
+            
+            <div style="margin: 20px 0; text-align: center;">
+                <img src="videos/before_after.gif" alt="GIF illustrating before-and-after image processing" style="width: 50%; height: auto; border: 2px solid #000; display: block; margin: 0 auto;"/>
+                <div style="
+                    max-width: 60%; 
+                    margin: 10px auto; 
+                    padding: 10px; 
+                    background-color: #CDE990; 
+                    border: 2px solid #000;
+                    border-radius: 10px; 
+                    text-align: left;
+                    font-size: small;
+                ">
+                    Georeferenced and tone-matched set of images before and after the new impact event.
+                </div>
+            </div>
+            
+            <li>It isolates the albedo change by dividing the before-and-after image pair.</li>
+            
+            <div style="margin: 20px 0; text-align: center;">
+                <img src="videos/divided.png" alt="Image showing the result of dividing before-and-after images" style="width: 30%; height: auto; border: 2px solid #000; display: block; margin: 0 auto;"/>
+                <div style="
+                    max-width: 60%; 
+                    margin: 10px auto; 
+                    padding: 10px; 
+                    background-color: #CDE990; 
+                    border: 2px solid #000;
+                    border-radius: 10px; 
+                    text-align: left;
+                    font-size: small;
+                ">
+                    Resulting image after dividing the set of georeferenced and tone-matched before-and-after images. This isolates the change caused by the impact.
+                </div>
+            </div>
+
+            <li>Using <u>arcGIS and QGIS (GIS software)</u>, I then measure crater size and precisely map the extent and asymmetry of the ejecta zones.</li>
+            
+            <div style="margin: 20px 0; text-align: center;">
+                <img src="videos/mapping.png" alt="Figure showing ejecta mapping and pixel intensity analysis" style="width: 30%; height: auto; border: 2px solid #000; display: block; margin: 0 auto;"/>
+                
+                <div style="
+                    max-width: 60%; 
+                    margin: 10px auto; 
+                    padding: 10px; 
+                    background-color: #CDE990; 
+                    border: 2px solid #000;
+                    border-radius: 10px; 
+                    text-align: left;
+                    font-size: small;
+                ">
+                    Ejecta mapping (M1237422334RC). In the top left, the location of a radial transect (red) is shown. In the top right the continuous and discontinuous ejecta layers are mapped. Bottom shows pixel intensity analysis. Locations of B-D features are highlighted in blue.
+                </div>
+            </div>
+            
+        </ol>
+
+        <hr>
+
+        <h2>Past Research & Publications</h2>
+        <table style="width:100%; border-collapse: collapse; margin-top: 1em; border: 2px solid #000;">
+            <thead>
+                <tr style="background-color: #CDE990;">
+                    <th style="padding: 8px; border: 2px solid #000; text-align: left;">Title</th>
+                    <th style="padding: 8px; border: 2px solid #000; text-align: left;">Type</th>
+                    <th style="padding: 8px; border: 2px solid #000; text-align: left;">Summary</th>
+                    <th style="padding: 8px; border: 2px solid #000; text-align: left;">Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 8px; border: 2px solid #000;">Dataset for "Open-sourcing a reconstructed catalog of new impacts on the Moon" (2025)</td>
+                    <td style="padding: 8px; border: 2px solid #000;">Open-Access Dataset</td>
+                    <td style="padding: 8px; border: 2px solid #000;">Open-source catalog of 85 new lunar impact sites (including 69 from Speyerer et al. 2016). Provides precise coordinates, formation windows, and LROC NAC IDs to support reproducible research.</td>
+                    <td style="padding: 8px; border: 2px solid #000;"><a href="https://zenodo.org/records/15755155" target="_blank">Zenodo Link</a></td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 2px solid #000;">Dissecting Lunar Ejecta Radii Around Cold Spot Craters (2025)</td>
+                    <td style="padding: 8px; border: 2px solid #000;">LPSC Abstract</td>
+                    <td style="padding: 8px; border: 2px solid #000;">Used LRO NAC and Diviner thermal data to analyze ejecta from 50 lunar cold-spot craters, exploring scaled ejecta radii variability and its correlation with rock abundance to infer subsurface rheology.</td>
+                    <td style="padding: 8px; border: 2px solid #000;"><a href="videos/LPSC2025.pdf" target="_blank">LPSC Abstract</a></td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 2px solid #000;">Sophomore Year Independent Research Thesis</td>
+                    <td style="padding: 8px; border: 2px solid #000;">Thesis/Report</td>
+                    <td style="padding: 8px; border: 2px solid #000;">Full independent study thesis on ejecta mobility in rocky vs. non-rocky craters.</td>
+                    <td style="padding: 8px; border: 2px solid #000;"><a href="videos/sophomore_year_independent_thesis.pdf" target="_blank">PDF Link</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+
       </div>
     </div>
   </div>
 </body>
-
 </html>

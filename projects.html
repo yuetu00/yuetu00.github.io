@@ -45,7 +45,7 @@
         <div class="folder" data-folder="project1" aria-label="Open Project 1">
           <div class="folder-tab"></div>
           <div class="folder-body"></div>
-          <div class="folder-label">project_1</div>
+          <div class="folder-label">NASA_Sonification_App</div>
         </div>
       </div>
       
@@ -81,18 +81,57 @@
     
     <div class="popup" id="popup-project1">
       <div class="popup-title-bar">
-          project_1.html
+          StellaSonos
           <button class="close-btn">✖</button>
       </div>
       <div class="popup-content">
-          <h3>Project 1</h3>
-          <p>This is a description of Project 1.</p>
-          <img src="path/to/image.jpg" alt="Project 1 Image" style="max-width: 100%; height: auto;" />
-          <video controls style="max-width: 100%; margin-top: 1rem;">
-            <source src="path/to/video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <p>More text content if needed.</p>
+          <h3>✨ StellaSonos (In Progress)</h3>
+          
+          <p style="font-style: italic; margin-bottom: 1rem;">
+              For NASA Universe of Learning 
+          </p>
+
+          <div style="margin: 1rem 0; text-align: center;">
+            <video controls style="width: 33.33%; height: auto; display: block; margin: 1rem auto; border: 2px solid black;">
+              <source src="videos/sonification_video.mp4" type="video/mp4" />
+              Your browser does not support the video tag. (Current video is not fully updated with all app capabilities.)
+            </video>
+          </div>
+
+          <p style="font-style: italic; margin-bottom: 1rem;">
+              NOTE: Video above is not updated and does not show all the capabilities of the app!
+          </p>
+          
+          <p>The goal is to create a multisensory experience of astronomy — not just seeing space, but hearing it. Stellasonos is designed for accessibility (making astronomical imagery more engaging for people with low or no vision)</p>
+          <h4>Goal & Overview</h4>
+          <p><u>StellaSonos</u> is a <u>NASA-funded</u> interactive mobile app (iOS and Android) that turns astronomical images from the <u>Chandra X-ray Observatory</u> into soundscapes. It creates a multisensory experience of astronomy, blending accessibility, education, and creative exploration for users, especially those with low or no vision.</p>
+          
+          <h4>💻 Implementation & Computer Vision Pipeline</h4>
+          <p><u>StellaSonos</u> is a <u>React Native</u> mobile app that transforms astronomical images into interactive soundscapes. The core functionality relies on a computer vision pipeline:</p>
+          <ol>
+              <li><u>Segmentation:</u> The app processes the image (resizing, thresholding) and uses <u>OpenCV's `connectedComponentsWithStats`</u> to segment the image into distinct regions (e.g., stars, nebulous structures).</li>
+              <li><u>Mapping:</u> Each labeled region is assigned a unique identifier which is mapped to a unique sound, tone, or vibration.</li>
+              <li><u>Interaction:</u> When a user taps the displayed image, the app converts the touch coordinates from screen space to image space, determines which labeled segment the tap falls into, and triggers the corresponding audio. Coordinate scaling and rotation are handled to maintain alignment.</li>
+          </ol>
+
+          <h4>🔗 Links & Resources</h4>
+          <ul>
+            <li><a href="https://universe-of-learning.org/home" target="_blank">NASA Universe of Learning Program</a></li>
+            <li><a href="https://www.nasa.gov/mission/chandra-x-ray-observatory/" target="_blank">Chandra X-ray Observatory</a></li>
+          </ul>
+          
+          <h4>🔧 Core Technology Stack</h4>
+          <p>
+            <a href="https://reactnative.dev/" target="_blank"><code>React Native</code></a>
+            |
+            <a href="https://opencv.org/" target="_blank"><code>OpenCV (via React Native)</code></a>
+            |
+            <a href="https://www.typescriptlang.org/" target="_blank"><code>TypeScript</code></a>
+            |
+            <a href="https://www.apple.com/ios/app-store/" target="_blank"><code>iOS</code></a>
+            |
+            <a href="https://play.google.com/store" target="_blank"><code>Android</code></a>
+          </p>
       </div>
     </div>
     
@@ -115,7 +154,7 @@
           </iframe>
         </div>
         
-        <p>A game designed for people who lack motivation to exercise. Travel to different planets and collect pets and memorabilia as you exercise! This project was built in **Android Studio** using **Kotlin** during Hack@Brown 2024.</p>
+        <p>A game designed for people who lack motivation to exercise. Travel to different planets and collect pets and memorabilia as you exercise! This project was built in <u>Android Studio</u> using <u>Kotlin</u> during Hack@Brown 2024.</p>
 
         <h4 style="margin-top: 1.5rem;">🎨 Figma Design File</h4>
         <div style="margin: 1rem 0; text-align: center;">
@@ -167,13 +206,13 @@
               </video>
           </div>
           
-          <p><strong>Abstract:</strong> This project focuses on making a lightweight neural network system capable of playing the rhythm game DJMax Respect V in real time using grayscale screen captures. Our model combines spatial feature extraction via a modified ResNet-18 and temporal modeling with a Gated Recurrent Unit (GRU) to predict key presses frame-by-frame. We also designed a dynamic loss function based on Binary Cross-Entropy that emphasizes temporal precision and label transitions.</p>
+          <p><u>Abstract:</u> This project focuses on making a lightweight neural network system capable of playing the rhythm game DJMax Respect V in real time using grayscale screen captures. Our model combines spatial feature extraction via a modified ResNet-18 and temporal modeling with a Gated Recurrent Unit (GRU) to predict key presses frame-by-frame. We also designed a dynamic loss function based on Binary Cross-Entropy that emphasizes temporal precision and label transitions.</p>
 
           <h4>📊 Key Results</h4>
           <ul>
-              <li>Achieved precision per key greater than **80%** (up to 99.8%).</li>
-              <li>Real game tests demonstrated performance that **exceeded human scores** on difficult, untrained songs.</li>
-              <li>The final model is a light-weight system with **3 million parameters**.</li>
+              <li>Achieved precision per key greater than <u>80%</u> (up to 99.8%).</li>
+              <li>Real game tests demonstrated performance that <u>exceeded human scores</u> on difficult, untrained songs.</li>
+              <li>The final model is a light-weight system with <u>3 million parameters</u>.</li>
           </ul>
 
           <div style="margin: 1rem 0; text-align: center; height: 400px; border: 2px solid #ccc;">
@@ -227,7 +266,7 @@
               <img src="videos/pipeline.png" alt="Machine Learning Pipeline" style="max-width: 100%; height: auto; border: 1px solid #ddd;" />
           </div>
 
-          <p>Using the Lunar Reconnaissance Orbiter dataset, consisting of 502 fresh craters, 869 old craters, and 3,629 images containing neither, we performed feature extraction and attained 768-dimensional embeddings. Dimensionality reduction was applied, and several models were tested, with the two most notable being **SVM** and **Random Forest**.</p>
+          <p>Using the Lunar Reconnaissance Orbiter dataset, consisting of 502 fresh craters, 869 old craters, and 3,629 images containing neither, we performed feature extraction and attained 768-dimensional embeddings. Dimensionality reduction was applied, and several models were tested, with the two most notable being <u>SVM</u> and <u>Random Forest</u>.</p>
           
           <h4 style="margin-top: 1.5rem;">📊 Key Results (Model Performance)</h4>
           <div style="margin: 1rem 0; text-align: center;">
